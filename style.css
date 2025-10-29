@@ -1,0 +1,163 @@
+/* --- Global Styles and Background Effects --- */
+body {
+  /* Use a modern, readable font */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
+  /* Subtle Background Effect: Gradient with Noise Overlay for realism */
+  background: radial-gradient(circle at top left, #f1f2f6, #e9ecef 70%); 
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)' opacity='0.05'/%3E%3C/svg%3E");
+  background-size: 16px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+/* --- Chat Container Styling (The Main Card) --- */
+.chat-container {
+  background: white;
+  width: 100%;
+  max-width: 420px; /* Slightly wider for better mobile/desktop balance */
+  min-height: 600px; /* Ensures a good height */
+  border-radius: 16px; 
+  /* Realistic, soft shadow */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05); 
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+  padding: 0; /* Removing padding from container to style elements inside */
+}
+
+/* --- Header Styling (Targeting the <h2>) --- */
+.chat-container h2 {
+  background-color: #007bff; /* Primary brand color */
+  color: white;
+  margin: 0;
+  padding: 15px 20px;
+  font-size: 1.3em;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* Add a subtle inset shadow at the bottom */
+  box-shadow: inset 0 -1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Chat Box Area --- */
+#chat-box {
+  flex-grow: 1; /* Takes up all vertical space */
+  height: 400px; 
+  overflow-y: auto;
+  padding: 20px;
+  background-color: #f8f9fa; /* Light chat background */
+  border: none; /* Removed default border */
+}
+
+/* Custom scrollbar for a polished look */
+#chat-box::-webkit-scrollbar {
+  width: 6px;
+}
+#chat-box::-webkit-scrollbar-thumb {
+  background-color: #ced4da;
+  border-radius: 3px;
+}
+#chat-box::-webkit-scrollbar-track {
+  background-color: #f8f9fa;
+}
+
+/* --- Input/Button Area Layout --- */
+/* We'll use the .chat-container's padding/display properties for the input layout */
+.chat-container input,
+.chat-container button {
+  /* Reset default styles */
+  margin: 0; 
+  box-sizing: border-box; 
+}
+
+/* Layout for the input and button */
+.chat-container > input, 
+.chat-container > button {
+  /* These elements are direct children of .chat-container in your HTML */
+  padding: 15px 20px;
+  border-top: 1px solid #e9ecef;
+}
+
+/* --- Input Field Styling --- */
+#user-input {
+  width: calc(100% - 100px); /* Adjust width to leave space for the button */
+  padding: 10px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 20px; /* Rounded pill shape */
+  font-size: 16px;
+  margin: 10px 0 10px 20px; /* Margin to position it well inside the container */
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+#user-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* --- Send Button Styling --- */
+.chat-container button {
+  width: 70px; /* Fixed width for button */
+  padding: 10px 15px;
+  background-color: #28a745; /* A pleasant 'Send' green */
+  color: white;
+  border: none;
+  border-radius: 20px; /* Matches the input field */
+  cursor: pointer;
+  font-size: 16px;
+  margin: 10px 20px 10px 10px; /* Margin to position it well */
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.chat-container button:hover {
+  background-color: #218838;
+}
+
+.chat-container button:active {
+  transform: translateY(1px);
+}
+
+/* --- Message Styling (Placeholders for JS) --- */
+/* These classes (user/bot) need to be added by your JavaScript for the bubbles to appear */
+.message {
+  display: flex;
+  margin: 10px 0;
+}
+
+.user {
+  justify-content: flex-end;
+}
+
+.bot {
+  justify-content: flex-start;
+}
+
+/* Message Bubble Content */
+.message-content {
+  max-width: 75%;
+  padding: 10px 15px;
+  border-radius: 20px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+}
+
+.user .message-content {
+  background-color: #007bff; 
+  color: white;
+  border-bottom-right-radius: 4px; 
+}
+
+.bot .message-content {
+  background-color: #ffffff; 
+  color: #343a40; 
+  border: 1px solid #dee2e6; 
+  border-bottom-left-radius: 4px; 
+}
